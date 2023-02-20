@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class ExamProgram {
 
-  public int group, scoreHTML, scoreCSS, scoreJS, maxScore, minScore;
-  double avgScore;
+  private int group, scoreHTML, scoreCSS, scoreJS, maxScore, minScore;
+  private double avgScore;
 
   public void execute() {
     input();
@@ -11,7 +11,7 @@ public class ExamProgram {
     print();
   }
 
-  public void input() {
+  private void input() {
     Scanner input = new Scanner(System.in);
     System.out.println("몇 기인지 입력해주세요.");
     group = input.nextInt();
@@ -23,13 +23,13 @@ public class ExamProgram {
     scoreJS = input.nextInt();
   }
 
-  public void calculateScore() {
+  private void calculateScore() {
     avgScore = (scoreJS + scoreCSS + scoreHTML) / 3.0;
     maxScore = Math.max(Math.max(scoreCSS, scoreJS), scoreHTML);
     minScore = Math.min(Math.min(scoreCSS, scoreJS), scoreHTML);
   }
 
-  public boolean is100() {
+  private boolean is100() {
     if (scoreJS == 100 && scoreCSS == 100) {
       return true;
     } else if (scoreHTML == 100 && scoreJS == 100) {
@@ -39,7 +39,7 @@ public class ExamProgram {
     }
   }
 
-  public boolean isPass() {
+  private boolean isPass() {
     if (group == 1 || group == 2) {
       return avgScore >= 60;
     } else if (group == 3) {
@@ -48,7 +48,7 @@ public class ExamProgram {
     return false;
   }
 
-  public void print() {
+  private void print() {
     if (isPass() || is100()) {
       System.out.println("합격입니다.");
     } else {
